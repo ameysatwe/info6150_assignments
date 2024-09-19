@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Profile</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="header">
+      <div class="container">
+        <nav>
+          <img src="images/logo.png" class="logo" />
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Certificates</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="header-text">
+          <p>Web Developer, Student</p>
+          <h1>
+            Hi, I'm <span>Amey</span> <br />
+            Satwe from Boston
+          </h1>
+        </div>
+      </div>
+    </div>
+
+    <div id="about">
+      <div class="container">
+        <div class="row">
+          <div class="about-col-1">
+            <img src="images/amey_headshot (1).jpg" />
+          </div>
+          <div class="about-col-2">
+            <details>
+              <summary>
+                <h1 class="subtitle">About Me</h1>
+              </summary>
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae
+                corporis accusamus nulla accusantium, tempora, beatae impedit
+                quas repellendus debitis sit nesciunt enim quisquam quod
+                blanditiis totam iusto cumque, excepturi expedita.
+              </p>
+            </details>
+            <div class="tab-titles">
+              <p class="tab-links active-link" onclick="opentab('skills')">
+                Skills
+              </p>
+              <p class="tab-links" onclick="opentab('Experience')">
+                Experience
+              </p>
+              <p class="tab-links" onclick="opentab('Education')">Education</p>
+            </div>
+            <div class="tab-contents active-tab" id="skills">
+              <ul>
+                <li>
+                  <span>Software Engineering</span><br />Creating Websites
+                </li>
+                <li><span>Devops</span><br />Managing Cloud resources</li>
+                <li><span>App development</span><br />Building Mobile Apps</li>
+              </ul>
+            </div>
+            <div class="tab-contents" id="Experience">
+              <ul>
+                <li><span>2021-2023</span><br />Dassault Systems</li>
+                <li><span>2021-2023</span><br />Vlabs IIT Bombay</li>
+                <li><span>2020-2021</span><br />Ansys</li>
+              </ul>
+            </div>
+            <div class="tab-contents" id="Education">
+              <ul>
+                <li><span>2023-Present</span><br />Northeastern University</li>
+                <li><span>2017-2021</span><br />Pune University</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="Certificates">
+      <div class="container">
+        <h1 class="subtitle">My Certificates</h1>
+        <div class="certificate-list">
+          <a href="#">
+            <div>
+              <h2>Google Qwiklabs</h2>
+              <p>Create and Manage resources using load balancer</p>
+            </div>
+          </a>
+
+          <a
+            href="https://www.cloudskillsboost.google/public_profiles/f8c6a28c-f975-4a37-91f7-6f504f4e8596/badges/485132"
+          >
+            <div>
+              <h2>Google Qwiklabs</h2>
+              <p>Deploy Kubernetes in Google Cloud</p>
+            </div>
+          </a>
+          <a href="">
+            <div>
+              <h2>Coursera</h2>
+              <p>Machine learning foundation</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div id="Projects">
+      <div class="container">
+        <h1 class="subtitle">Projects</h1>
+      </div>
+    </div>
+
+    <script>
+      var tablinks = document.getElementsByClassName("tab-links");
+      var tabcontents = document.getElementsByClassName("tab-contents");
+
+      function opentab(tabName) {
+        for (tl of tablinks) {
+          tl.classList.remove("active-link");
+        }
+        for (tc of tabcontents) {
+          tc.classList.remove("active-tab");
+        }
+        event.currentTarget.classList.add("active-link");
+        document.getElementById(tabName).classList.add("active-tab");
+      }
+    </script>
+  </body>
+</html>
