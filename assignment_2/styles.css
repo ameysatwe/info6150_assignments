@@ -26,6 +26,11 @@ html{
     padding:10px 10%;
 }
 
+table{
+    padding: 10px 10%;
+    margin:auto;
+}
+
 nav{
     display: flex;
     align-items: center;
@@ -215,6 +220,12 @@ nav ul li a:hover::after{
     display: block;
     transition: transform 0.5s;
 }
+.project video{
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+    transition: transform 0.5s;
+}
 
 .layer{
     width: 100%;
@@ -264,6 +275,28 @@ nav .fa-solid{
     display: none;
 }
 
+.Contact{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+td i{
+    font-size: 26px;
+    color: #fff;
+    margin: 10px;
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+
+td a{
+    text-decoration: none
+}
+
+button{
+    color: #080808;
+    background-color: #ff004f;
+    size: 16px;
+}
 @media only screen and (max-width: 375px){
     #header{
         background:none;
