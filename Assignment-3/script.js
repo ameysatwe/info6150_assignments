@@ -17,7 +17,7 @@ var socialMedia = {
 var t = new Title("CONNECT WITH ME!");
 
 var table = document.getElementById("myTable");
-var lastIndex = Math.floor(table.rows.length / 2);
+var lastIndex = 0;
 function addStudent(Popup = false) {
   let row = table.insertRow();
   let cell1 = row.insertCell(0);
@@ -28,8 +28,6 @@ function addStudent(Popup = false) {
   let cell6 = row.insertCell(5);
   let cell7 = row.insertCell(6);
   let cell8 = row.insertCell(7);
-  // let cell9 = row.insertCell(8);
-  // let cell10 = row.insertCell(9);
   cell1.innerHTML =
     "<input type='checkbox' onClick='handleCheckbox(this)'/> <br/>  <br/><img src='down.png' width='25px'  onclick='handleTextArea(this)'/>";
   cell2.innerHTML = `Student ${lastIndex + 1}`;
@@ -39,8 +37,6 @@ function addStudent(Popup = false) {
   cell6.innerHTML = "TA";
   cell7.innerHTML = "12345";
   cell8.innerHTML = "100%";
-  // cell9.innerHTML = "";
-  // cell10.innerHTML = "";
   let textAreaRow = table.insertRow();
   textAreaRow.classList.add("dropDownTextArea");
   let textAreaCell = textAreaRow.insertCell(0);
@@ -69,7 +65,8 @@ function handleCheckbox(checkbox) {
         "<button id='deleteButton' onclick='deleteRow(this)'>Delete</button>";
       cell10.innerHTML =
         "<button id='editButton' onclick='editRow(this)'>Edit</button>";
-      button.style.backgroundColor = "red";
+      button.style.backgroundColor = "orange";
+      button.disabled = false;
     }
   } else {
     if (row.cells.length === 10) {
@@ -77,7 +74,7 @@ function handleCheckbox(checkbox) {
       row.deleteCell(8);
     }
     row.classList.remove("deleteRow");
-    button.style.backgroundColor = "orange";
+    // button.style.backgroundColor = "gray";
     let anyChecked = Array.from(
       document.querySelectorAll("input[type='checkbox']")
     ).some((checkbox) => checkbox.checked);
@@ -85,14 +82,17 @@ function handleCheckbox(checkbox) {
       deleteCol.style.display = "none";
       editCol.style.display = "none";
       button.style.backgroundColor = "gray";
+      button.disabled = true;
     }
   }
 }
 
 function deleteRow(button) {
-  let row = button.parentElement.parentElement;
-  table.deleteRow(row.rowIndex);
-  lastIndex--;
+  if (confirm("Are you sure you want to delete this student?", "Yes", "No")) {
+    let row = button.parentElement.parentElement;
+    table.deleteRow(row.rowIndex);
+    lastIndex--;
+  }
 }
 
 function handleTextArea(img) {
@@ -108,4 +108,8 @@ function editRow(button) {
   let row = button.parentElement.parentElement;
   const name = row.cells[1].innerHTML;
   prompt(name, "Enter new name");
+}
+
+function submitStudent() {
+  showPopup("Submitted successfully");
 }
