@@ -67,6 +67,7 @@ function handleCheckbox(checkbox) {
         "<button id='editButton' onclick='editRow(this)'>Edit</button>";
       button.style.backgroundColor = "orange";
       button.disabled = false;
+      button.style.cursor = "pointer";
     }
   } else {
     if (row.cells.length === 10) {
@@ -82,6 +83,7 @@ function handleCheckbox(checkbox) {
       editCol.style.display = "none";
       button.style.backgroundColor = "gray";
       button.disabled = true;
+      button.style.cursor = "not-allowed";
     }
   }
 }
