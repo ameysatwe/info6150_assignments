@@ -74,7 +74,6 @@ function handleCheckbox(checkbox) {
       row.deleteCell(8);
     }
     row.classList.remove("deleteRow");
-    // button.style.backgroundColor = "gray";
     let anyChecked = Array.from(
       document.querySelectorAll("input[type='checkbox']")
     ).some((checkbox) => checkbox.checked);
@@ -91,7 +90,6 @@ function deleteRow(button) {
   if (confirm("Are you sure you want to delete this student?", "Yes", "No")) {
     let row = button.parentElement.parentElement;
     table.deleteRow(row.rowIndex);
-    lastIndex--;
   }
 }
 
