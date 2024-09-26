@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Table CheckList</title>
+    <link rel="stylesheet" type="text/css" href="table.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <div class="nameDiv">
+      <h1>Amey Satwe</h1>
+      <h1>002244396</h1>
+    </div>
+    <hr />
+    <table id="myTable">
+      <tr>
+        <th></th>
+        <th>STUDENT</th>
+        <th>ADVISOR</th>
+        <th>AWARD<br />STATUS</th>
+        <th>SEMESTER</th>
+        <th>TYPE</th>
+        <th>BUDGET<br />#</th>
+        <th>PERCENTAGE</th>
+        <th id="deleteCol" style="display: none">DELETE</th>
+        <th id="editCol" style="display: none">Edit</th>
+      </tr>
+    </table>
+
+    <br /><br />
+
+    <button id="button">SUBMIT SELECTED AWARDS</button>
+    <button id="add" onclick="addStudent(true)">Add New Student</button>
+
+    <nav class="socialmediaicons"></nav>
+    <script src="script.js"></script>
+    <script type="text/javascript">
+      addStudent(false);
+      addStudent(false);
+      addStudent(false);
+    </script>
+  </body>
+</html>
