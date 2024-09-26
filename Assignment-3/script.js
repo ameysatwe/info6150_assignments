@@ -91,7 +91,9 @@ function handleCheckbox(checkbox) {
 function deleteRow(button) {
   if (confirm("Are you sure you want to delete this student?", "Yes", "No")) {
     let row = button.parentElement.parentElement;
+    const name = row.cells[1].innerHTML;
     table.deleteRow(row.rowIndex);
+    showPopup(`${name} deleted successfully`);
   }
 }
 
@@ -107,7 +109,7 @@ function showPopup(message) {
 function editRow(button) {
   let row = button.parentElement.parentElement;
   const name = row.cells[1].innerHTML;
-  prompt(name, "Enter new name");
+  prompt(`Edit details of ${name}`, "Enter new name");
 }
 
 function submitStudent() {
