@@ -91,8 +91,10 @@ function handleCheckbox(checkbox) {
 function deleteRow(button) {
   if (confirm("Are you sure you want to delete this student?", "Yes", "No")) {
     let row = button.parentElement.parentElement;
+    let textArea = row.nextSibling;
     const name = row.cells[1].innerHTML;
     table.deleteRow(row.rowIndex);
+    table.deleteRow(textArea.rowIndex);
     showPopup(`${name} deleted successfully`);
   }
 }
