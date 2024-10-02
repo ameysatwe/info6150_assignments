@@ -87,7 +87,12 @@
             id="emailId"
             placeholder="yourname@domain.com"
           />
-          <br /><br />
+          <br />
+          <div id="emailError" class="error">
+            Please enter a valid email,only emails with @northeastern.edu domain
+            are allowed.
+          </div>
+          <br />
 
           <label for="phoneNumber">Phone Number*:</label>
           <input
@@ -96,11 +101,20 @@
             id="phoneNumber"
             placeholder="xxx-xxx-xxxx"
           />
-          <br /><br />
+          <br />
+          <div id="phoneError" class="error">
+            Please enter a valid phone number,all numbers should be 10 digits
+            and in the format xxx-xxx-xxxx.
+          </div>
+          <br />
 
           <label for="zipcode">ZipCode*:</label>
           <input type="text" name="zipcode" id="zipcode" placeholder="xxxxxx" />
-          <br /><br />
+          <br />
+          <div id="zipError" class="error">
+            Please enter a zipcode,all zipcodes should be 6 digits
+          </div>
+          <br />
 
           <label for="zipcode">How did you hear*:</label>
           <input type="checkbox" name="source" value="facebook" /> Facebook
