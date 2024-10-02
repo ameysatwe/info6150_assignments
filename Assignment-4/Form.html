@@ -119,7 +119,11 @@
           <label for="zipcode">How did you hear*:</label>
           <input type="checkbox" name="source" value="facebook" /> Facebook
           <input type="checkbox" name="source" value="google" /> Google
-          <input type="checkbox" name="source" value="yelp" /> Yelp <br /><br />
+          <input type="checkbox" name="source" value="yelp" /> Yelp <br />
+          <div id="checkboxError" class="error">
+            Please select atleast one source
+          </div>
+          <br />
 
           <label for="comments">Comments*:</label>
           <textarea
@@ -130,7 +134,7 @@
             cols="25"
           ></textarea>
           <br /><br />
-          <input type="Submit" id="submit" disabled />
+          <input type="Submit" id="submit" />
           <input type="Reset" />
           <br /><br />
         </form>
