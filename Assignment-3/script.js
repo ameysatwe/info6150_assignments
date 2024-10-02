@@ -29,7 +29,7 @@ function addStudent(Popup = false) {
   let cell7 = row.insertCell(6);
   let cell8 = row.insertCell(7);
   cell1.innerHTML =
-    "<input type='checkbox' onClick='handleCheckbox(this)'/> <br/>  <br/><img src='down.png' width='25px'  onclick='handleTextArea(this)'/>";
+    "<input type='checkbox' onChange='handleCheckbox(this)'/> <br/>  <br/><img src='down.png' width='25px'  onclick='handleTextArea(this)'/>";
   cell2.innerHTML = `Student ${lastIndex + 1}`;
   cell3.innerHTML = `Teacher ${lastIndex + 1}`;
   cell4.innerHTML = "Approved";
@@ -88,6 +88,19 @@ function handleCheckbox(checkbox) {
   }
 }
 
+function manageDeleteColumns() {
+  let editCol = document.getElementById("editCol");
+  let deleteCol = document.getElementById("deleteCol");
+  let anyChecked = Array.from(
+    document.querySelectorAll("input[type='checkbox']")
+  ).some((checkbox) => checkbox.checked);
+  if (!anyChecked) {
+    deleteCol.style.display = "none";
+    editCol.style.display = "none";
+  }
+}
+manageDeleteColumns();
+
 function deleteRow(button) {
   if (confirm("Are you sure you want to delete this student?", "Yes", "No")) {
     let row = button.parentElement.parentElement;
@@ -95,6 +108,7 @@ function deleteRow(button) {
     const name = row.cells[1].innerHTML;
     table.deleteRow(row.rowIndex);
     table.deleteRow(textArea.rowIndex);
+    manageDeleteColumns();
     showPopup(`${name} deleted successfully`);
   }
 }
