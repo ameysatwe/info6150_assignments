@@ -20,27 +20,47 @@ const checkSubmitBtn = () => {
   const isPhoneValid = validatePhone();
   const isZipValid = validateZip();
   const isCheckBoxValid = validateCheckboxes();
-  const isCustomTextareaValid = validateCustomTextArea();
+  //   const isCustomTextareaValid = validateCustomTextArea();
   const isAddressValid = validateAddress();
   const isCommentsValid = validateComments();
   const isSelectionValid = selections.value !== "";
-  const customTextAreaValid =
-    (customCheckbox.checked === true && customTextarea.value.length > 5) ||
-    customCheckbox.checked === false;
+  const customTextAreaValid = customTextarea.value.length > 5;
 
-  const validateFlag =
-    isRadioValid &&
-    isFirstNameValid &&
-    isLastNameValid &&
-    isEmailValid &&
-    isPhoneValid &&
-    isCheckBoxValid &&
-    isCustomTextareaValid &&
-    isAddressValid &&
-    isCommentsValid &&
-    isSelectionValid &&
-    customTextAreaValid &&
-    isZipValid;
+  console.log("isRadioValid" + isRadioValid);
+  console.log("isFirstNameValid" + isFirstNameValid);
+  console.log("isLastNameValid" + isLastNameValid);
+  console.log("isEmailValid" + isEmailValid);
+  console.log("isPhoneValid" + isPhoneValid);
+  console.log("isZipValid" + isZipValid);
+  console.log("isCheckBoxValid" + isCheckBoxValid);
+  //   console.log("isCustomTextareaValid" + isCustomTextareaValid);
+  console.log("isAddressValid" + isAddressValid);
+  console.log("isCommentsValid" + isCommentsValid);
+  console.log("isSelectionValid" + isSelectionValid);
+  console.log("customTextAreaValid" + customTextAreaValid);
+
+  const validateFlag = customCheckbox.checked
+    ? isRadioValid &&
+      isFirstNameValid &&
+      isLastNameValid &&
+      isEmailValid &&
+      isPhoneValid &&
+      isCheckBoxValid &&
+      isAddressValid &&
+      isCommentsValid &&
+      isSelectionValid &&
+      customTextAreaValid &&
+      isZipValid
+    : isRadioValid &&
+      isFirstNameValid &&
+      isLastNameValid &&
+      isEmailValid &&
+      isPhoneValid &&
+      isCheckBoxValid &&
+      isAddressValid &&
+      isCommentsValid &&
+      isSelectionValid &&
+      isZipValid;
   console.log(validateFlag);
   if (validateFlag !== true) {
     document.getElementById("submit").disabled = true;
@@ -174,6 +194,7 @@ const handleSelection = () => {
     selectionErrorDiv.style.display = "none";
     // return true;
   }
+  checkSubmitBtn();
 };
 
 const updateCheckboxLabel = (selection) => {
@@ -199,21 +220,22 @@ let customTextarea = document.getElementById("customTextArea");
 const customCheckboxValidate = () => {
   if (customCheckbox.checked) {
     textareaContainer.classList.remove("hidden");
-    return true;
+    // return true;
   } else {
     textareaContainer.classList.add("hidden");
     customTextarea.value = "";
-    return false;
+    // return false;
   }
+  checkSubmitBtn();
 };
 let customCheckbox = document.getElementById("customCheckbox");
 customCheckbox.addEventListener("change", customCheckboxValidate);
 
 const validateCustomTextArea = () => {
-  if (customTextarea.value.length < 5) {
+  if (customTextarea.value.length <= 5) {
     document.getElementById("customTextError").style.display = "block";
     return false;
-  } else {
+  } else if (!customTextarea.classList.contains("hidden")) {
     document.getElementById("customTextError").style.display = "none";
     return true;
   }
@@ -250,6 +272,7 @@ document.getElementById("submit").addEventListener("click", handleSubmit);
 
 function handleSubmit(event) {
   event.preventDefault();
+  document.getElementById("tablediv").classList.remove("hidden");
   let table = document.getElementById("resultTableData");
   let tbody = table.getElementsByTagName("tbody")[0];
   let title = document.querySelector("input[name=title]:checked").value;
@@ -281,6 +304,8 @@ function handleSubmit(event) {
   row.insertCell(9).textContent = selectedValues.join(", ");
   row.insertCell(10).textContent = comments;
   row.insertCell(11).textContent = customTextarea.value;
+
+  document.getElementById("form").reset();
 }
 
 checkSubmitBtn();
