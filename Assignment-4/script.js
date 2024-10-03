@@ -21,9 +21,10 @@ const checkSubmitBtn = () => {
   const isZipValid = validateZip();
   const isCheckBoxValid = validateCheckboxes();
   const isCustomTextareaValid = validateCustomTextArea();
-  const isCustomChecboxValid = customCheckboxValidate();
   const isAddressValid = validateAddress();
   const isCommentsValid = validateComments();
+  const isSelectionValid = handleSelection();
+
   const validateFlag =
     isRadioValid &&
     isFirstNameValid &&
@@ -32,12 +33,11 @@ const checkSubmitBtn = () => {
     isPhoneValid &&
     isCheckBoxValid &&
     isCustomTextareaValid &&
-    isCustomChecboxValid &&
     isAddressValid &&
     isCommentsValid &&
+    isSelectionValid &&
     isZipValid;
-
-  //   console.log(validateFlag);
+  console.log(validateFlag);
   if (validateFlag !== true) {
     document.getElementById("submit").disabled = true;
   } else {
@@ -165,10 +165,12 @@ const handleSelection = (event) => {
   if (event.target.value === "") {
     customDiv.style.display = "none";
     selectionErrorDiv.style.display = "block";
+    // return false;
   } else {
     updateCheckboxLabel(event.target.value);
     customDiv.style.display = "block";
     selectionErrorDiv.style.display = "none";
+    // return true;
   }
 };
 
@@ -202,10 +204,11 @@ const customCheckboxValidate = () => {
     return false;
   }
 };
+let customCheckbox = document.getElementById("customCheckbox");
 customCheckbox.addEventListener("change", customCheckboxValidate);
 
 const validateCustomTextArea = () => {
-  if (customTextarea.value === "" && customCheckbox.checked === true) {
+  if (customTextarea.value < 5 && customCheckbox.checked === true) {
     document.getElementById("customTextError").style.display = "block";
     return false;
   } else {
@@ -237,10 +240,14 @@ const validateComments = () => {
 document
   .getElementById("selections")
   .addEventListener("change", handleSelection);
-document
-  .getElementById("customTextArea")
-  .addEventListener("input", validateCustomTextArea);
+document.getElementById("customTextArea").addEventListener("input", validate);
 
 document.getElementById("address").addEventListener("input", validate);
 document.getElementById("comments").addEventListener("input", validate);
+document.getElementById("submit").addEventListener("click", handleSubmit);
+
+function handleSubmit(event) {
+  event.preventDefault();
+}
+
 checkSubmitBtn();
