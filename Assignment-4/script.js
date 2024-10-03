@@ -6,6 +6,9 @@ const validate = () => {
   validatePhone();
   validateZip();
   validateCheckboxes();
+  validateCustomTextArea();
+  validateAddress();
+  validateComments();
   checkSubmitBtn();
 };
 
@@ -17,6 +20,10 @@ const checkSubmitBtn = () => {
   const isPhoneValid = validatePhone();
   const isZipValid = validateZip();
   const isCheckBoxValid = validateCheckboxes();
+  const isCustomTextareaValid = validateCustomTextArea();
+  const isCustomChecboxValid = customCheckboxValidate();
+  const isAddressValid = validateAddress();
+  const isCommentsValid = validateComments();
   const validateFlag =
     isRadioValid &&
     isFirstNameValid &&
@@ -24,9 +31,13 @@ const checkSubmitBtn = () => {
     isEmailValid &&
     isPhoneValid &&
     isCheckBoxValid &&
+    isCustomTextareaValid &&
+    isCustomChecboxValid &&
+    isAddressValid &&
+    isCommentsValid &&
     isZipValid;
 
-  console.log(validateFlag);
+  //   console.log(validateFlag);
   if (validateFlag !== true) {
     document.getElementById("submit").disabled = true;
   } else {
@@ -36,7 +47,6 @@ const checkSubmitBtn = () => {
 
 let radioButtons = document.querySelectorAll("input[type=radio]");
 const validateRadioButtons = () => {
-  console.log(radioButtons);
   if (
     radioButtons[0].checked ||
     radioButtons[1].checked ||
@@ -107,7 +117,6 @@ const validatePhone = () => {
     document.getElementById("phoneError").style.display = "none";
     return true;
   }
-  checkSubmitBtn();
 };
 
 const validatePhoneNumber = (phone) => {
@@ -124,7 +133,7 @@ const validateZip = () => {
     document.getElementById("zipError").style.display = "none";
     return true;
   }
-  checkSubmitBtn();
+  //   checkSubmitBtn();
 };
 
 const validateZipRegex = (zip) => {
@@ -133,7 +142,7 @@ const validateZipRegex = (zip) => {
 };
 
 const validateCheckboxes = () => {
-  let checkboxes = document.querySelectorAll("input[type=checkbox]");
+  let checkboxes = document.querySelectorAll("input[name=source]");
   for (let checkbox of checkboxes) {
     if (checkbox.checked === true) {
       document.getElementById("checkboxError").style.display = "none";
@@ -144,13 +153,22 @@ const validateCheckboxes = () => {
   return false;
 };
 
+let selectionErrorDiv = document.getElementById("selectionError");
 const handleSelection = (event) => {
   let customDiv = document.getElementById("custom");
+  if (customCheckbox.checked) {
+    customCheckbox.checked = false;
+    customTextarea.value = "";
+    customDiv.classList.add("hidden");
+    textareaContainer.classList.add("hidden");
+  }
   if (event.target.value === "") {
     customDiv.style.display = "none";
+    selectionErrorDiv.style.display = "block";
   } else {
     updateCheckboxLabel(event.target.value);
     customDiv.style.display = "block";
+    selectionErrorDiv.style.display = "none";
   }
 };
 
@@ -173,8 +191,56 @@ document.querySelectorAll("input[name=source]").forEach((checkbox) => {
   checkbox.addEventListener("click", validate);
 });
 
+let customTextarea = document.getElementById("customTextArea");
+const customCheckboxValidate = () => {
+  if (customCheckbox.checked) {
+    textareaContainer.classList.remove("hidden");
+    return true;
+  } else {
+    textareaContainer.classList.add("hidden");
+    customTextarea.value = "";
+    return false;
+  }
+};
+customCheckbox.addEventListener("change", customCheckboxValidate);
+
+const validateCustomTextArea = () => {
+  if (customTextarea.value === "" && customCheckbox.checked === true) {
+    document.getElementById("customTextError").style.display = "block";
+    return false;
+  } else {
+    document.getElementById("customTextError").style.display = "none";
+    return true;
+  }
+};
+const validateAddress = () => {
+  let address = document.getElementById("address");
+  if (address.value.length < 5) {
+    document.getElementById("addressError").style.display = "block";
+    return false;
+  } else {
+    document.getElementById("addressError").style.display = "none";
+    return true;
+  }
+};
+
+const validateComments = () => {
+  let comments = document.getElementById("comments");
+  if (comments.value.length < 5) {
+    document.getElementById("commentsError").style.display = "block";
+    return false;
+  } else {
+    document.getElementById("commentsError").style.display = "none";
+    return true;
+  }
+};
 document
   .getElementById("selections")
   .addEventListener("change", handleSelection);
+document
+  .getElementById("customTextArea")
+  .addEventListener("input", validateCustomTextArea);
 
+document.getElementById("address").addEventListener("input", validate);
+document.getElementById("comments").addEventListener("input", validate);
 checkSubmitBtn();

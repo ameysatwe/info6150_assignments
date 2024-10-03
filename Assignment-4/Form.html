@@ -165,12 +165,29 @@
               <option value="Mocha">Mocha</option>
               <option value="Latte">Latte</option>
             </select>
+            <div id="selectionError" class="error">
+              Please select a beverage
+            </div>
+            <br />
             <div id="custom" style="display: none">
               <br />
               <label for="custom" id="customLabel">Custom:</label>
               <input type="checkbox" name="custom" id="customCheckbox" />
             </div>
           </div>
+          <div id="textareaContainer" class="hidden">
+            <br />
+            <label for="textArea" id="textAreaLanel">Add Customisations:</label>
+            <textarea type="textArea" name="textArea" id="customTextArea">
+            </textarea>
+            <div id="customTextError" class="error">
+              Please enter a valid customisation or write N/A if no extra
+              customisation.
+            </div>
+          </div>
+
+          <br />
+
           <input type="Submit" id="submit" />
           <input type="Reset" />
           <br /><br />
