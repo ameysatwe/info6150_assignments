@@ -23,7 +23,9 @@ const checkSubmitBtn = () => {
   const isCustomTextareaValid = validateCustomTextArea();
   const isAddressValid = validateAddress();
   const isCommentsValid = validateComments();
-  const isSelectionValid = handleSelection();
+  const isSelectionValid = selections.value !== "";
+  const customTextAreaValid =
+    customCheckbox.checked === true && customTextarea.value > 5;
 
   const validateFlag =
     isRadioValid &&
@@ -36,6 +38,7 @@ const checkSubmitBtn = () => {
     isAddressValid &&
     isCommentsValid &&
     isSelectionValid &&
+    customTextAreaValid &&
     isZipValid;
   console.log(validateFlag);
   if (validateFlag !== true) {
@@ -84,7 +87,6 @@ const validateLastName = () => {
     document.getElementById("lNameError").style.display = "none";
     return true;
   }
-  checkSubmitBtn();
 };
 
 function validateInput(input) {
@@ -101,7 +103,6 @@ const validateEmail = () => {
     document.getElementById("emailError").style.display = "none";
     return true;
   }
-  checkSubmitBtn();
 };
 const validateNortheasternEmail = (email) => {
   const regex = /^[a-zA-Z0-9._%+-]+@northeastern\.edu$/;
@@ -133,7 +134,6 @@ const validateZip = () => {
     document.getElementById("zipError").style.display = "none";
     return true;
   }
-  //   checkSubmitBtn();
 };
 
 const validateZipRegex = (zip) => {
@@ -154,23 +154,23 @@ const validateCheckboxes = () => {
 };
 
 let selectionErrorDiv = document.getElementById("selectionError");
-const handleSelection = (event) => {
+let selections = document.getElementById("selections");
+const handleSelection = () => {
   let customDiv = document.getElementById("custom");
-  if (customCheckbox.checked) {
-    customCheckbox.checked = false;
-    customTextarea.value = "";
-    customDiv.classList.add("hidden");
-    textareaContainer.classList.add("hidden");
-  }
-  if (event.target.value === "") {
+  customCheckbox.checked = false;
+  customTextarea.value = "";
+  customDiv.classList.add("hidden");
+  textareaContainer.classList.add("hidden");
+
+  if (selections.value === "") {
     customDiv.style.display = "none";
     selectionErrorDiv.style.display = "block";
-    // return false;
+    return false;
   } else {
-    updateCheckboxLabel(event.target.value);
+    updateCheckboxLabel(selections.value);
     customDiv.style.display = "block";
     selectionErrorDiv.style.display = "none";
-    // return true;
+    return true;
   }
 };
 
