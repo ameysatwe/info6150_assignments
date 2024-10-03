@@ -144,6 +144,21 @@ const validateCheckboxes = () => {
   return false;
 };
 
+const handleSelection = (event) => {
+  let customDiv = document.getElementById("custom");
+  if (event.target.value === "") {
+    customDiv.style.display = "none";
+  } else {
+    updateCheckboxLabel(event.target.value);
+    customDiv.style.display = "block";
+  }
+};
+
+const updateCheckboxLabel = (selection) => {
+  let checkboxLabel = document.getElementById("customLabel");
+  checkboxLabel.textContent = `${selection} Large 1$:`;
+};
+
 document.getElementById("emailId").addEventListener("input", validate);
 document.getElementById("firstName").addEventListener("input", validate);
 radioButtons.forEach((radioButton) => {
@@ -154,8 +169,12 @@ document.getElementById("lastName").addEventListener("input", validate);
 document.getElementById("phoneNumber").addEventListener("input", validate);
 
 document.getElementById("zipcode").addEventListener("input", validate);
-document.querySelectorAll("input[type=checkbox]").forEach((checkbox) => {
+document.querySelectorAll("input[name=source]").forEach((checkbox) => {
   checkbox.addEventListener("click", validate);
 });
+
+document
+  .getElementById("selections")
+  .addEventListener("change", handleSelection);
 
 checkSubmitBtn();

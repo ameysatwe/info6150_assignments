@@ -125,6 +125,24 @@
           </div>
           <br />
 
+          <label for="address">Street Address*:</label>
+          <input type="text" name="address" id="address" placeholder="xxxxxx" />
+          <br />
+          <div id="addressError" class="error">
+            Please enter a valid address
+          </div>
+          <br />
+
+          <label for="address2">Street Address 2:</label>
+          <input
+            type="text"
+            name="address2"
+            id="zipcode"
+            placeholder="boston"
+          />
+          <br />
+          <br />
+
           <label for="comments">Comments*:</label>
           <textarea
             name="text"
@@ -133,7 +151,26 @@
             rows="5"
             cols="25"
           ></textarea>
-          <br /><br />
+          <br />
+          <div id="commentsError" class="error">
+            Please enter a valid comment
+          </div>
+          <br />
+          <div>
+            <label for="selections"> Select a beverage *:</label>
+            <select name="selections" id="selections">
+              <option value="">--Please select an option--</option>
+              <option value="Coffee">Coffee</option>
+              <option value="Tea">Tea</option>
+              <option value="Mocha">Mocha</option>
+              <option value="Latte">Latte</option>
+            </select>
+            <div id="custom" style="display: none">
+              <br />
+              <label for="custom" id="customLabel">Custom:</label>
+              <input type="checkbox" name="custom" id="customCheckbox" />
+            </div>
+          </div>
           <input type="Submit" id="submit" />
           <input type="Reset" />
           <br /><br />
