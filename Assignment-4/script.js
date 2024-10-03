@@ -25,7 +25,8 @@ const checkSubmitBtn = () => {
   const isCommentsValid = validateComments();
   const isSelectionValid = selections.value !== "";
   const customTextAreaValid =
-    customCheckbox.checked === true && customTextarea.value > 5;
+    (customCheckbox.checked === true && customTextarea.value.length > 5) ||
+    customCheckbox.checked === false;
 
   const validateFlag =
     isRadioValid &&
@@ -157,6 +158,7 @@ let selectionErrorDiv = document.getElementById("selectionError");
 let selections = document.getElementById("selections");
 const handleSelection = () => {
   let customDiv = document.getElementById("custom");
+
   customCheckbox.checked = false;
   customTextarea.value = "";
   customDiv.classList.add("hidden");
@@ -165,12 +167,12 @@ const handleSelection = () => {
   if (selections.value === "") {
     customDiv.style.display = "none";
     selectionErrorDiv.style.display = "block";
-    return false;
+    // return false;
   } else {
     updateCheckboxLabel(selections.value);
     customDiv.style.display = "block";
     selectionErrorDiv.style.display = "none";
-    return true;
+    // return true;
   }
 };
 
@@ -208,7 +210,7 @@ let customCheckbox = document.getElementById("customCheckbox");
 customCheckbox.addEventListener("change", customCheckboxValidate);
 
 const validateCustomTextArea = () => {
-  if (customTextarea.value < 5 && customCheckbox.checked === true) {
+  if (customTextarea.value.length < 5) {
     document.getElementById("customTextError").style.display = "block";
     return false;
   } else {
@@ -248,6 +250,37 @@ document.getElementById("submit").addEventListener("click", handleSubmit);
 
 function handleSubmit(event) {
   event.preventDefault();
+  let table = document.getElementById("resultTableData");
+  let tbody = table.getElementsByTagName("tbody")[0];
+  let title = document.querySelector("input[name=title]:checked").value;
+  let firstName = document.getElementById("firstName").value;
+  let lastName = document.getElementById("lastName").value;
+  let email = document.getElementById("emailId").value;
+  let phone = document.getElementById("phoneNumber").value;
+  let address = document.getElementById("address").value;
+  let address2 = document.getElementById("address2").value;
+  let zip = document.getElementById("zipcode").value;
+  let comments = document.getElementById("comments").value;
+  const checkboxes = document.querySelectorAll('input[name="source"]:checked');
+
+  // Get the values of all checked checkboxes
+  const selectedValues = Array.from(checkboxes).map(
+    (checkbox) => checkbox.value
+  );
+
+  let row = tbody.insertRow();
+  row.insertCell(0).textContent = title;
+  row.insertCell(1).textContent = firstName;
+  row.insertCell(2).textContent = lastName;
+  row.insertCell(3).textContent = email;
+  row.insertCell(4).textContent = phone;
+  row.insertCell(5).textContent = address;
+  row.insertCell(6).textContent = address2;
+  row.insertCell(7).textContent = zip;
+  row.insertCell(8).textContent = selections.value;
+  row.insertCell(9).textContent = selectedValues.join(", ");
+  row.insertCell(10).textContent = comments;
+  row.insertCell(11).textContent = customTextarea.value;
 }
 
 checkSubmitBtn();
