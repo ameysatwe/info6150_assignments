@@ -1,0 +1,199 @@
+// Variables
+$primary-color: #1db954;
+$secondary-color: #191414;
+$text-color: #ffffff;
+$font-size-large: 2rem;
+$font-size-medium: 1.5rem;
+$font-size-small: 1rem;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin responsive($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}
+
+// Global Styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: $secondary-color;
+  color: $text-color;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+// Header
+.header {
+  background-color: #333;
+  padding: 1rem;
+
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+      font-size: $font-size-medium;
+      color: $primary-color;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+
+      li a {
+        font-size: $font-size-small;
+        color: $text-color;
+        &:hover {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+}
+
+// Hero Section
+.hero {
+  background-color: $secondary-color;
+  color: $text-color;
+  height: 80vh;
+  @include flex-center;
+  text-align: center;
+
+  .hero-content {
+    h1 {
+      font-size: $font-size-large;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: $font-size-medium;
+      margin-bottom: 2rem;
+    }
+
+    .btn-primary {
+      background-color: $primary-color;
+      color: $text-color;
+      padding: 0.75rem 1.5rem;
+      text-transform: uppercase;
+      font-size: $font-size-small;
+      border-radius: 30px;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: darken($primary-color, 10%);
+      }
+    }
+  }
+}
+
+// Trending Playlists Section
+.trending-playlists {
+  background-color: $secondary-color;
+  padding: 2rem;
+
+  h2 {
+    color: $text-color;
+    font-size: $font-size-large;
+    margin-bottom: 1.5rem;
+  }
+
+  .playlists-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+
+    .playlist-card {
+      background-color: #333;
+      color: $text-color;
+      padding: 1.5rem;
+      text-align: center;
+      border-radius: 10px;
+      transition: transform 0.3s;
+
+      &:hover {
+        transform: scale(1.01);
+      }
+    }
+  }
+}
+
+// Subscription Section
+.subscription {
+  background-color: $secondary-color;
+  color: $text-color;
+  padding: 2rem;
+
+  h2 {
+    font-size: $font-size-large;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .subscription-options {
+    @include flex-center;
+    gap: 2rem;
+
+    .plan {
+      background-color: #333;
+      padding: 2rem;
+      border-radius: 10px;
+      text-align: center;
+      transition: transform 0.3s;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      h3 {
+        font-size: $font-size-medium;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-size: $font-size-small;
+        margin-bottom: 1.5rem;
+      }
+
+      .btn-secondary {
+        background-color: #666;
+        color: $text-color;
+        padding: 0.75rem 1.5rem;
+        border-radius: 30px;
+        transition: background-color 0.3s;
+
+        &:hover {
+          background-color: darken(#666, 10%);
+        }
+      }
+    }
+  }
+}
+
+// Footer
+.footer {
+  background-color: #333;
+  padding: 1rem;
+  text-align: center;
+
+  p {
+    font-size: $font-size-small;
+    color: $text-color;
+  }
+}

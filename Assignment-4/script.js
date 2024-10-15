@@ -26,19 +26,6 @@ const checkSubmitBtn = () => {
   const isSelectionValid = selections.value !== "";
   const customTextAreaValid = customTextarea.value.length > 5;
 
-  //   console.log("isRadioValid" + isRadioValid);
-  //   console.log("isFirstNameValid" + isFirstNameValid);
-  //   console.log("isLastNameValid" + isLastNameValid);
-  //   console.log("isEmailValid" + isEmailValid);
-  //   console.log("isPhoneValid" + isPhoneValid);
-  //   console.log("isZipValid" + isZipValid);
-  //   console.log("isCheckBoxValid" + isCheckBoxValid);
-  //   //   console.log("isCustomTextareaValid" + isCustomTextareaValid);
-  //   console.log("isAddressValid" + isAddressValid);
-  //   console.log("isCommentsValid" + isCommentsValid);
-  //   console.log("isSelectionValid" + isSelectionValid);
-  //   console.log("customTextAreaValid" + customTextAreaValid);
-
   const validateFlag = customCheckbox.checked
     ? isRadioValid &&
       isFirstNameValid &&
