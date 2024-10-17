@@ -53,32 +53,93 @@ a {
 }
 
 // Hero Section
-.hero {
-  background-color: $secondary-color;
-  color: $text-color;
-  height: 80vh;
-  @include flex-center;
-  text-align: center;
+// .hero {
+//   background-color: $secondary-color;
+//   color: $text-color;
+//   height: 80vh;
+//   @include flex-center;
+//   text-align: center;
 
+//   .hero-content {
+//     h1 {
+//       font-size: $font-size-large;
+//       margin-bottom: 1rem;
+//     }
+
+//     p {
+//       font-size: $font-size-medium;
+//       margin-bottom: 2rem;
+//     }
+
+//     .btn-primary {
+//       background-color: $primary-color;
+//       color: $text-color;
+//       padding: 0.75rem 1.5rem;
+//       text-transform: uppercase;
+//       font-size: $font-size-small;
+//       border-radius: 30px;
+//       transition: background-color 0.3s;
+
+//       &:hover {
+//         background-color: darken($primary-color, 10%);
+//       }
+//     }
+//   }
+// }
+
+
+// Hero Section Styling
+.hero {
+  position: relative;
+  background-image: url('/images/hero-image.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $text-color;
+  text-align: center;
+  padding: 2rem;
+
+  // Adding a dark overlay on top of the background image for better text readability
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); // Dark overlay
+    z-index: 1;
+  }
+
+  // Hero content is layered above the background
   .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+
     h1 {
-      font-size: $font-size-large;
+      font-size: 3rem;
       margin-bottom: 1rem;
     }
 
     p {
-      font-size: $font-size-medium;
+      font-size: 1.2rem;
       margin-bottom: 2rem;
     }
 
     .btn-primary {
       background-color: $primary-color;
       color: $text-color;
-      padding: 0.75rem 1.5rem;
-      text-transform: uppercase;
-      font-size: $font-size-small;
+      padding: 1rem 2rem;
       border-radius: 30px;
-      transition: background-color 0.3s;
+      font-size: 1rem;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
 
       &:hover {
         background-color: darken($primary-color, 10%);
@@ -87,36 +148,72 @@ a {
   }
 }
 
+
 // Trending Playlists Section
+// Playlist Section Styles
+
 .trending-playlists {
-  background-color: $secondary-color;
+  text-align: center;
   padding: 2rem;
 
   h2 {
-    color: $text-color;
-    font-size: $font-size-large;
+    font-size: 2rem;
     margin-bottom: 1.5rem;
+    color: $primary-color;
   }
 
   .playlists-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+  }
 
-    .playlist-card {
-      background-color: #333;
-      color: $text-color;
-      padding: 1.5rem;
-      text-align: center;
-      border-radius: 10px;
-      transition: transform 0.3s;
+  // Playlist Card Styles
+  .playlist-card {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
 
-      &:hover {
-        transform: scale(1.075);
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    .playlist-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem;
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+
+      h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
       }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+
+    &:hover .playlist-info {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
     }
   }
 }
+
 
 // Subscription Section
 .subscription {

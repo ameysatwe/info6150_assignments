@@ -14,6 +14,9 @@ body {
   font-family: Arial, sans-serif;
   background-color: $secondary-color;
   color: $text-color;
+  min-height: 100vh; // Ensures body takes the full height of the viewport
+  display: flex;
+  flex-direction: column; // Make the body a flex container
 }
 
 a {
@@ -58,6 +61,7 @@ a {
   padding: 4rem 2rem;
   color: $text-color;
   text-align: center;
+  flex: 1; // Make the content grow and take the available space
 
   h1 {
     font-size: $font-size-large;
@@ -113,6 +117,7 @@ a {
   background-color: #333;
   padding: 1rem;
   text-align: center;
+  margin-top: auto; // Ensures the footer sticks to the bottom when the content is short
 
   p {
     font-size: $font-size-small;
