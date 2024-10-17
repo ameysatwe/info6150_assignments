@@ -1,17 +1,6 @@
-@import url("variables.scss");
+@import "_variables.scss";
 // Mixins
-@mixin flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-@mixin responsive($breakpoint) {
-  @media (max-width: $breakpoint) {
-    @content;
-  }
-}
-
+@import "_mixins.scss";
 // Global Styles
 * {
   margin: 0;

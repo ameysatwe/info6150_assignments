@@ -1,19 +1,8 @@
 // Variables
-@import url("variables.scss");
+@import "_variables.scss";
 
 // Mixins
-@mixin flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-@mixin responsive($breakpoint) {
-  @media (max-width: $breakpoint) {
-    @content;
-  }
-}
-
+@import "_mixins.scss";
 // Global Styles
 * {
   margin: 0;
@@ -23,7 +12,7 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: $secondary-color;
+  background-color: #191414;
   color: $text-color;
 }
 
@@ -123,7 +112,7 @@ a {
       transition: transform 0.3s;
 
       &:hover {
-        transform: scale(1.01);
+        transform: scale(1.075);
       }
     }
   }

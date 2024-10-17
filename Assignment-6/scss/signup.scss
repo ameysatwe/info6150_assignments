@@ -1,23 +1,9 @@
 // Variables
-@import url("variables.scss");
+@import "_variables.scss";
+@import "_mixins.scss";
 $input-background: #333;
 $input-border: #555;
 
-
-// Mixins
-@mixin flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-@mixin responsive($breakpoint) {
-  @media (max-width: $breakpoint) {
-    @content;
-  }
-}
-
-// Global Styles
 * {
   margin: 0;
   padding: 0;
