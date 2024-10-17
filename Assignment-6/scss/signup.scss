@@ -1,0 +1,135 @@
+// Variables
+@import url("variables.scss");
+$input-background: #333;
+$input-border: #555;
+
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin responsive($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}
+
+// Global Styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: $secondary-color;
+  color: $text-color;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+// Header
+.header {
+  background-color: #333;
+  padding: 1rem;
+
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+      font-size: $font-size-medium;
+      color: $primary-color;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+
+      li a {
+        font-size: $font-size-small;
+        color: $text-color;
+        &:hover {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+}
+
+// Sign-Up Section
+.signup-section {
+  background-color: $secondary-color;
+  padding: 4rem 2rem;
+  color: $text-color;
+  text-align: center;
+
+  h1 {
+    font-size: $font-size-large;
+    margin-bottom: 2rem;
+  }
+
+  .signup-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 400px;
+    margin: 0 auto;
+
+    label {
+      font-size: $font-size-small;
+      text-align: left;
+      display: block;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: $input-background;
+      border: 1px solid $input-border;
+      border-radius: 5px;
+      color: $text-color;
+      font-size: $font-size-small;
+
+      &:focus {
+        border-color: $primary-color;
+      }
+    }
+
+    .btn-primary {
+      background-color: $primary-color;
+      color: $text-color;
+      padding: 0.75rem 1.5rem;
+      text-transform: uppercase;
+      font-size: $font-size-small;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: darken($primary-color, 10%);
+      }
+    }
+  }
+}
+
+// Footer
+.footer {
+  background-color: #333;
+  padding: 1rem;
+  text-align: center;
+
+  p {
+    font-size: $font-size-small;
+    color: $text-color;
+  }
+}

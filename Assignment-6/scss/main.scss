@@ -1,10 +1,5 @@
 // Variables
-$primary-color: #1db954;
-$secondary-color: #191414;
-$text-color: #ffffff;
-$font-size-large: 2rem;
-$font-size-medium: 1.5rem;
-$font-size-small: 1rem;
+@import url("variables.scss");
 
 // Mixins
 @mixin flex-center {

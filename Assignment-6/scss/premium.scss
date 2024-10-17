@@ -1,0 +1,150 @@
+@import url("variables.scss");
+// Mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin responsive($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}
+
+// Global Styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: $secondary-color;
+    color: $text-color;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}  
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+// Header
+.header {
+  background-color: #333;
+  padding: 1rem;
+
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+      font-size: $font-size-medium;
+      color: $primary-color;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+
+      li a {
+        font-size: $font-size-small;
+        color: $text-color;
+        &:hover {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+}
+
+// Premium Plans Section
+.premium-plans {
+    flex: 1; // This allows the main content to take up the available space.
+    background-color: $secondary-color;
+    padding: 4rem 2rem;
+    color: $text-color;
+    text-align: center;
+  
+    h1 {
+      font-size: $font-size-large;
+      margin-bottom: 2rem;
+    }
+  
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+  
+      @include responsive(768px) {
+        grid-template-columns: 1fr;
+      }
+  
+      .plan-card {
+        background-color: #333;
+        padding: 2rem;
+        border-radius: 10px;
+        text-align: center;
+        transition: transform 0.3s;
+  
+        &:hover {
+          transform: scale(1.05);
+        }
+  
+        h2 {
+          font-size: $font-size-medium;
+          margin-bottom: 1rem;
+          color: $primary-color;
+        }
+  
+        p {
+          font-size: $font-size-medium;
+          margin-bottom: 1.5rem;
+        }
+  
+        ul {
+          list-style: none;
+          padding: 0;
+          margin-bottom: 2rem;
+  
+          li {
+            margin-bottom: 0.75rem;
+          }
+        }
+  
+        .btn-primary {
+          background-color: $primary-color;
+          color: $text-color;
+          padding: 0.75rem 1.5rem;
+          border-radius: 30px;
+          font-size: $font-size-small;
+          text-transform: uppercase;
+          cursor: pointer;
+          transition: background-color 0.3s;
+  
+          &:hover {
+            background-color: darken($primary-color, 10%);
+          }
+        }
+      }
+    }
+  }
+  
+  // Footer sticks to the bottom
+  .footer {
+    background-color: #333;
+    padding: 1rem;
+    text-align: center;
+    margin-top: auto; // Pushes the footer to the bottom if the content doesn't fill the page.
+  
+    p {
+      font-size: $font-size-small;
+      color: $text-color;
+    }
+  }
