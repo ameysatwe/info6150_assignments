@@ -28,7 +28,7 @@ a {
   align-items: center;
 }
 .header .nav .logo {
-  font-size: responsive-font(1.5);
+  font-size: 1.5rem;
   color: #1db954;
 }
 .header .nav .nav-links {
@@ -37,7 +37,7 @@ a {
   gap: 1.5rem;
 }
 .header .nav .nav-links li a {
-  font-size: responsive-font(1);
+  font-size: 1rem;
   color: #ffffff;
 }
 .header .nav .nav-links li a:hover {
@@ -52,7 +52,7 @@ a {
   flex: 1;
 }
 .signup-section h1 {
-  font-size: responsive-font(2);
+  font-size: 2rem;
   margin-bottom: 2rem;
 }
 .signup-section .signup-form {
@@ -63,7 +63,7 @@ a {
   margin: 0 auto;
 }
 .signup-section .signup-form label {
-  font-size: responsive-font(1);
+  font-size: 1rem;
   text-align: left;
   display: block;
 }
@@ -74,7 +74,7 @@ a {
   border: 1px solid #555;
   border-radius: 5px;
   color: #ffffff;
-  font-size: responsive-font(1);
+  font-size: 1rem;
 }
 .signup-section .signup-form input:focus {
   border-color: #1db954;
@@ -84,7 +84,7 @@ a {
   color: #ffffff;
   padding: 0.75rem 1.5rem;
   text-transform: uppercase;
-  font-size: responsive-font(1);
+  font-size: 1rem;
   border-radius: 30px;
   cursor: pointer;
   transition: background-color 0.3s;
@@ -100,6 +100,6 @@ a {
   margin-top: auto;
 }
 .footer p {
-  font-size: responsive-font(1);
+  font-size: 1rem;
   color: #ffffff;
 }/*# sourceMappingURL=signup.css.map */
