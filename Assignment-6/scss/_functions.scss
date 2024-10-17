@@ -1,0 +1,3 @@
+@function responsive-font($base-size) {
+    @return $base-size * 1rem;
+  }

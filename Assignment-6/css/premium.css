@@ -28,7 +28,7 @@ a {
   align-items: center;
 }
 .header .nav .logo {
-  font-size: 1.5rem;
+  font-size: responsive-font(1.5);
   color: #1db954;
 }
 .header .nav .nav-links {
@@ -37,7 +37,7 @@ a {
   gap: 1.5rem;
 }
 .header .nav .nav-links li a {
-  font-size: 1rem;
+  font-size: responsive-font(1);
   color: #ffffff;
 }
 .header .nav .nav-links li a:hover {
@@ -52,7 +52,7 @@ a {
   text-align: center;
 }
 .premium-plans h1 {
-  font-size: 2rem;
+  font-size: responsive-font(2);
   margin-bottom: 2rem;
 }
 .premium-plans .plans-grid {
@@ -76,12 +76,12 @@ a {
   transform: scale(1.05);
 }
 .premium-plans .plans-grid .plan-card h2 {
-  font-size: 1.5rem;
+  font-size: responsive-font(1.5);
   margin-bottom: 1rem;
   color: #1db954;
 }
 .premium-plans .plans-grid .plan-card p {
-  font-size: 1.5rem;
+  font-size: responsive-font(1.5);
   margin-bottom: 1.5rem;
 }
 .premium-plans .plans-grid .plan-card ul {
@@ -97,7 +97,7 @@ a {
   color: #ffffff;
   padding: 0.75rem 1.5rem;
   border-radius: 30px;
-  font-size: 1rem;
+  font-size: responsive-font(1);
   text-transform: uppercase;
   cursor: pointer;
   transition: background-color 0.3s;
@@ -113,6 +113,6 @@ a {
   margin-top: auto;
 }
 .footer p {
-  font-size: 1rem;
+  font-size: responsive-font(1);
   color: #ffffff;
 }/*# sourceMappingURL=premium.css.map */

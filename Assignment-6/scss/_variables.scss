@@ -1,6 +1,6 @@
 $primary-color: #1db954;
 $secondary-color: #191414;
 $text-color: #ffffff;
-$font-size-large: 2rem;
-$font-size-medium: 1.5rem;
-$font-size-small: 1rem;
+$font-size-large: responsive-font(2);
+$font-size-medium: responsive-font(1.5);
+$font-size-small: responsive-font(1);

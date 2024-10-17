@@ -25,7 +25,7 @@ a {
   align-items: center;
 }
 .header .nav .logo {
-  font-size: 1.5rem;
+  font-size: responsive-font(1.5);
   color: #1db954;
 }
 .header .nav .nav-links {
@@ -34,7 +34,7 @@ a {
   gap: 1.5rem;
 }
 .header .nav .nav-links li a {
-  font-size: 1rem;
+  font-size: responsive-font(1);
   color: #ffffff;
 }
 .header .nav .nav-links li a:hover {
@@ -151,7 +151,7 @@ a {
   padding: 2rem;
 }
 .subscription h2 {
-  font-size: 2rem;
+  font-size: responsive-font(2);
   margin-bottom: 1.5rem;
   text-align: center;
 }
@@ -172,11 +172,11 @@ a {
   transform: scale(1.05);
 }
 .subscription .subscription-options .plan h3 {
-  font-size: 1.5rem;
+  font-size: responsive-font(1.5);
   margin-bottom: 1rem;
 }
 .subscription .subscription-options .plan p {
-  font-size: 1rem;
+  font-size: responsive-font(1);
   margin-bottom: 1.5rem;
 }
 .subscription .subscription-options .plan .btn-secondary {
@@ -196,6 +196,6 @@ a {
   text-align: center;
 }
 .footer p {
-  font-size: 1rem;
+  font-size: responsive-font(1);
   color: #ffffff;
 }/*# sourceMappingURL=main.css.map */
