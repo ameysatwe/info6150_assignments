@@ -4,7 +4,7 @@ $(document).ready(() => {
 
   const validateNumber = (number, errorElement) => {
     let valid = true;
-    if (!number || isNaN(number)) {
+    if (isNaN(number)) {
       $(errorElement).text("Please enter a valid number.");
       valid = false;
     } else {
@@ -34,7 +34,7 @@ $(document).ready(() => {
         result = number1 * number2;
         break;
       case "divide":
-        result = number2 !== 0 ? number1 / number2 : "Infinity";
+        result = number2 !== 0 ? number1 / number2 : "Cannot divide by zero";
         break;
     }
 
