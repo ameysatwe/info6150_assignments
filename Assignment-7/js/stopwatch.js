@@ -6,7 +6,12 @@ let stopwatchInterval;
 const datePicker = document.getElementById("datePicker");
 const currentDate = new Date().toISOString().split("T")[0]; // Format as YYYY-MM-DD
 datePicker.value = currentDate;
-datePicker.disabled = true; // Disable editing the date
+datePicker.disabled = false; // Disable editing the date
+datePicker.addEventListener("keydown", function (event) {
+  event.preventDefault(); // Prevent typing in the date input field
+});
+// datePicker.contentEditable = false;
+// datePicker.isContentEditable = true;
 
 // Function to format time in HH:MM:SS
 const formatTime = (milliseconds) => {
