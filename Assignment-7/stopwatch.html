@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stopwatch</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f4f4f4;
+      }
+
+      .stopwatch-container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      .time-label {
+        font-size: 3em;
+        margin-bottom: 20px;
+      }
+
+      .date-picker {
+        margin-bottom: 20px;
+      }
+
+      button {
+        font-size: 1.2em;
+        padding: 10px 20px;
+        margin: 5px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      #startButton {
+        background-color: #4caf50;
+        color: white;
+      }
+
+      #stopButton {
+        background-color: #f39c12;
+        color: white;
+      }
+
+      #resetButton {
+        background-color: #e74c3c;
+        color: white;
+      }
+    </style>
+    <script
+      src="https://kit.fontawesome.com/e2686bcd76.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="stopwatch-container">
+      <div class="time-label" id="timeDisplay">00:00:00</div>
+
+      <input type="date" id="datePicker" class="date-picker" editable="true" />
+
+      <div>
+        <button id="startButton"><i class="fa fa-play"></i></button>
+        <button id="stopButton"><i class="fa-solid fa-stop"></i></button>
+        <button id="resetButton">Reset</button>
+      </div>
+    </div>
+
+    <script>
+      let startTime = 0;
+      let elapsedTime = 0;
+      let stopwatchInterval;
+
+      // Initialize date picker to show the current date
+      const datePicker = document.getElementById("datePicker");
+      const currentDate = new Date().toISOString().split("T")[0]; // Format as YYYY-MM-DD
+      datePicker.value = currentDate;
+      datePicker.disabled = true; // Disable editing the date
+
+      // Function to format time in HH:MM:SS
+      const formatTime = (milliseconds) => {
+        const hours = Math.floor((milliseconds / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((milliseconds / (1000 * 60)) % 60);
+        const seconds = Math.floor((milliseconds / 1000) % 60);
+
+        return `${hours.toString().padStart(2, "0")}:${minutes
+          .toString()
+          .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+      };
+
+      // Update time display asynchronously
+      const updateTime = async () => {
+        return new Promise((resolve) => {
+          stopwatchInterval = setInterval(() => {
+            const currentTime = Date.now();
+            elapsedTime = currentTime - startTime;
+            document.getElementById("timeDisplay").innerText =
+              formatTime(elapsedTime);
+          }, 1000);
+          resolve();
+        });
+      };
+
+      // Start the stopwatch
+      const startStopwatch = async () => {
+        if (!stopwatchInterval) {
+          startTime = Date.now() - elapsedTime;
+          await updateTime();
+        }
+      };
+
+      // Stop the stopwatch
+      const stopStopwatch = async () => {
+        return new Promise((resolve) => {
+          clearInterval(stopwatchInterval);
+          stopwatchInterval = null;
+          resolve();
+        });
+      };
+
+      // Reset the stopwatch
+      const resetStopwatch = async () => {
+        return new Promise((resolve) => {
+          clearInterval(stopwatchInterval);
+          stopwatchInterval = null;
+          startTime = 0;
+          elapsedTime = 0;
+          document.getElementById("timeDisplay").innerText = "00:00:00";
+          resolve();
+        });
+      };
+
+      // Event listeners for buttons
+      document
+        .getElementById("startButton")
+        .addEventListener("click", startStopwatch);
+      document
+        .getElementById("stopButton")
+        .addEventListener("click", stopStopwatch);
+      document
+        .getElementById("resetButton")
+        .addEventListener("click", resetStopwatch);
+    </script>
+  </body>
+</html>

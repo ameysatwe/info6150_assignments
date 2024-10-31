@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        background-color: black;
+      }
+      .container {
+        margin-top: 50px;
+        max-width: 400px;
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .result {
+        background-color: #f8f9fa;
+        padding: 10px;
+        border-radius: 5px;
+        text-align: center;
+      }
+
+      .error {
+        color: red;
+        font-size: 0.9em;
+        margin-top: 5px;
+      }
+
+      /* Circular button styles using Bootstrap */
+      .btn-circle {
+        width: 60px;
+        height: 60px;
+        padding: 10px;
+        border-radius: 50%;
+        font-size: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f39c12;
+        color: white;
+      }
+      /* 
+      /* Adjust the colors for each button */
+
+      /* Hover effect */
+      .btn-circle:hover {
+        opacity: 0.85;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="text-center">Welcome, <span id="usernameDisplay"></span></h2>
+
+      <form id="calculatorForm">
+        <div class="mb-3">
+          <label for="number1" class="form-label">Number 1</label>
+          <input
+            type="text"
+            id="number1"
+            class="form-control"
+            placeholder="Enter first number"
+          />
+          <span class="error" id="number1Error"></span>
+        </div>
+
+        <div class="mb-3">
+          <label for="number2" class="form-label">Number 2</label>
+          <input
+            type="text"
+            id="number2"
+            class="form-control"
+            placeholder="Enter second number"
+          />
+          <span class="error" id="number2Error"></span>
+        </div>
+
+        <div class="row text-center">
+          <div class="col-3">
+            <button type="button" class="btn btn-circle" id="addBtn">+</button>
+          </div>
+          <div class="col-3">
+            <button type="button" class="btn btn-circle" id="subtractBtn">
+              -
+            </button>
+          </div>
+          <div class="col-3">
+            <button type="button" class="btn btn-circle" id="multiplyBtn">
+              ×
+            </button>
+          </div>
+          <div class="col-3">
+            <button type="button" class="btn btn-circle" id="divideBtn">
+              ÷
+            </button>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <label for="result" class="form-label">Result:</label>
+          <div id="result" class="result">0</div>
+        </div>
+      </form>
+    </div>
+
+    <!-- jQuery and Bootstrap JS CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      $(document).ready(() => {
+        const username = localStorage.getItem("username");
+        $("#usernameDisplay").text(username);
+
+        const validateNumber = (number, errorElement) => {
+          let valid = true;
+          if (!number || isNaN(number)) {
+            $(errorElement).text("Please enter a valid number.");
+            valid = false;
+          } else {
+            $(errorElement).text("");
+          }
+          return valid;
+        };
+
+        const calculate = (operation) => {
+          const number1 = parseFloat($("#number1").val());
+          const number2 = parseFloat($("#number2").val());
+
+          let valid =
+            validateNumber(number1, "#number1Error") &&
+            validateNumber(number2, "#number2Error");
+          if (!valid) return;
+
+          const result = {
+            add: () => number1 + number2,
+            subtract: () => number1 - number2,
+            multiply: () => number1 * number2,
+            divide: () => (number2 !== 0 ? number1 / number2 : "Infinity"),
+          }[operation]();
+
+          $("#result").text(result);
+        };
+
+        // Attach click handlers to each button
+        $("#addBtn").on("click", () => calculate("add"));
+        $("#subtractBtn").on("click", () => calculate("subtract"));
+        $("#multiplyBtn").on("click", () => calculate("multiply"));
+        $("#divideBtn").on("click", () => calculate("divide"));
+      });
+    </script>
+  </body>
+</html>
