@@ -22,13 +22,6 @@ $(document).ready(() => {
       validateNumber(number2, "#number2Error");
     if (!valid) return;
 
-    // const result = {
-    //   add: () => number1 + number2,
-    //   subtract: () => number1 - number2,
-    //   multiply: () => number1 * number2,
-    //   divide: () => (number2 !== 0 ? number1 / number2 : "Infinity"),
-    // }[operation]();
-
     let result;
     switch (operation) {
       case "add":
