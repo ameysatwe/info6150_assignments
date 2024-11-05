@@ -11,5 +11,9 @@ module.exports = mongoose.model(
       type: String,
       required: true,
     },
+    fullName: {
+      type: String,
+      required: true,
+    },
   })
 );
