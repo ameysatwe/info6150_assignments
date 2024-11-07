@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 require("dotenv").config();
 
-mongoose.connect(process.env.mongo_uri, { useNewUrlParser: true });
+mongoose.connect(process.env.mongo_uri);
 
 mongoose.connection
   .once("open", () => console.log("Connected"))
