@@ -15,5 +15,8 @@ module.exports = mongoose.model(
       type: String,
       required: true,
     },
+    profilePic: {
+      type: String,
+    },
   })
 );
