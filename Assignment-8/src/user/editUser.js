@@ -1,6 +1,6 @@
 const { hashPassword, comparePassword } = require("../utils/bcryptutils");
 const User = require("../model/user");
-const { validatePassword, valdiateEmail } = require("../utils/validationUtils");
+const { validatePassword } = require("../utils/validationUtils");
 
 const editUser = async (req, res) => {
   const { email, password, fullName, updatedPassword } = req.body;

@@ -1,4 +1,4 @@
-const { hashPassword, comparePassword } = require("../utils/bcryptutils");
+const { hashPassword } = require("../utils/bcryptutils");
 const User = require("../model/user");
 const { validatePassword, valdiateEmail } = require("../utils/validationUtils");
 
