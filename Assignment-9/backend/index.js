@@ -8,6 +8,7 @@ const app = express();
 import mongoose from "mongoose";
 import routes from "./routes/routes.js";
 import dotenv from "dotenv";
+import cors from "cors";
 dotenv.config();
 
 mongoose.connect(process.env.mongo_uri);
@@ -19,7 +20,7 @@ mongoose.connection
   });
 
 app.use(express.json());
-
+app.use(cors());
 routes(app);
 
 app.listen(process.env.PORT || 3000, () => {

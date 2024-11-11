@@ -3,6 +3,7 @@ import { comparePassword } from "../utils/bcryptutils.js";
 
 const login = async (req, res) => {
   const { email, password } = req.body;
+  console.log(email, password);
   const user = await User.findOne({ email });
   if (!user) {
     return res.status(404).json({ error: "User not found" });
