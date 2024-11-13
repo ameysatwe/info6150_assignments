@@ -12,35 +12,28 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom"; // Import Link
 
-// const settings = ["Profile", "Account", "Dashboard", "Logout"];
 const pages = ["Home", "Jobs", "About", "Contact", "Company Showcase"];
+
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const user = JSON.parse(localStorage.getItem("user"));
-  const navigate = useNavigate();
-  //   console.log(JSON.parse(user));
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseNavMenu = (page) => {
+  const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  const handleNavigation = (page) => {
-    // setAnchorElNav(null);
-    console.log(page);
-    navigate(`/${page}`);
-  };
-
-  const handleCloseUserMenu = (event) => {
+  const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
 
@@ -48,6 +41,7 @@ const Navbar = () => {
     localStorage.removeItem("user");
     window.location.reload();
   };
+
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -71,6 +65,7 @@ const Navbar = () => {
             LOGO
           </Typography>
 
+          {/* Mobile view - Menu Icon */}
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -99,12 +94,22 @@ const Navbar = () => {
               sx={{ display: { xs: "block", md: "none" } }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleNavigation(page)}>
-                  <Typography sx={{ textAlign: "center" }}>{page}</Typography>
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  {/* Use Link component for navigation */}
+                  <Typography sx={{ textAlign: "center" }}>
+                    <Link
+                      to={`/${page.toLowerCase()}`}
+                      style={{ textDecoration: "none", color: "inherit" }}
+                    >
+                      {page}
+                    </Link>
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
+
+          {/* Desktop view */}
           <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           <Typography
             variant="h5"
@@ -124,23 +129,26 @@ const Navbar = () => {
           >
             LOGO
           </Typography>
+
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
+                component={Link}
+                to={`/${page.toLowerCase()}`} // Add navigation link here
               >
                 {page}
               </Button>
             ))}
           </Box>
+
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg">
-                  {`${user.fullName.split(" ")[0][0]}${
-                    user.fullName.split(" ")[1][0]
+                  {`${user?.fullName.split(" ")[0][0]}${
+                    user?.fullName.split(" ")[1][0]
                   }`}
                 </Avatar>
               </IconButton>

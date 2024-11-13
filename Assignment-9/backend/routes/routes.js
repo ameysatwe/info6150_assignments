@@ -5,6 +5,8 @@ import {
   deleteUser,
   uploadFile,
   login,
+  uploadImagesData,
+  getAllImages,
 } from "../user/index.js";
 
 import upload from "../utils/multer.js";
@@ -20,4 +22,8 @@ export default async (app) => {
   app.post("/user/uploadFile/", upload.single("file"), uploadFile);
 
   app.post("/user/login", login);
+
+  app.post("/company/upload", uploadImagesData);
+
+  app.get("/company/getAll", getAllImages);
 };
