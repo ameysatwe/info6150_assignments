@@ -32,7 +32,7 @@ const LoginForm = () => {
 
     try {
       const res = await loginService.post("/login", data);
-      localStorage.setItem("user", res.data.user);
+      localStorage.setItem("user", JSON.stringify(res.data.responseUser));
       navigate("/");
       setSnackbarSeverity("success");
       setSnackbarMessage("Login successful!");
