@@ -1,22 +1,3 @@
-// import Navbar from "../Navbar/Navbar.js";
-// import { Container, Typography } from "@mui/material";
-// const JobsComponent = () => {
-//   return (
-//     <>
-//       <Navbar />
-//       <Container>
-//         <Typography variant="h3" gutterBottom>
-//           Welcome to the jobs Page
-//         </Typography>
-//         <Typography variant="body1">This is the jobs dashboard.</Typography>
-//       </Container>
-//     </>
-//   );
-// };
-
-// export default JobsComponent;
-
-import * as React from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -77,6 +58,10 @@ export default function JobCarousel() {
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    cssEase: "linear",
+    arrows: true,
   };
 
   return (

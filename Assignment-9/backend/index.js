@@ -21,6 +21,7 @@ mongoose.connection
 
 app.use(express.json());
 app.use(cors());
+app.use("/images", express.static("images"));
 routes(app);
 
 app.listen(process.env.PORT || 3000, () => {
