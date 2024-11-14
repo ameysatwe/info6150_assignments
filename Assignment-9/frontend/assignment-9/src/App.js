@@ -6,6 +6,7 @@ import LoginForm from "./components/LoginForm/LoginForm";
 import JobsCarousel from "./components/Jobs/JobsComponent";
 import CompanyShowcase from "./components/CompanyShowcase/CompanyShowcase";
 import ContactForm from "./components/Contact/ContactForm";
+import AboutComponent from "./components/About/AboutComponent";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/jobs" element={<JobsCarousel />} />
           <Route path="/contact" element={<ContactForm />} />
+          <Route path="/about" element={<AboutComponent />} />
           <Route path="/Company Showcase" element={<CompanyShowcase />} />
         </Route>
       </Routes>

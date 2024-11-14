@@ -5,99 +5,86 @@ import {
   Card,
   CardContent,
   Typography,
+  Box,
+  Stack,
 } from "@mui/material/";
 
-import Grid from "@mui/material/Grid2";
+import "./ContactForm.css";
 
 const ContactForm = () => {
   return (
     <>
       <Navbar />
-      <div>
-        <Grid>
-          <Card
-            style={{ maxWidth: 450, padding: "20px 5px", margin: "0 auto" }}
-          >
-            <CardContent>
-              <Typography gutterBottom variant="h5">
-                Contact Us
-              </Typography>
-              <Typography
-                variant="body2"
-                color="textSecondary"
-                component="p"
-                gutterBottom
-              >
-                Fill up the form and our team will get back to you within 24
-                hours.
-              </Typography>
-              <form>
-                <Grid container spacing={1}>
-                  <Grid xs={12} sm={6} item>
-                    <TextField
-                      placeholder="Enter first name"
-                      label="First Name"
-                      variant="outlined"
-                      fullWidth
-                      required
-                    />
-                  </Grid>
-                  <Grid xs={12} sm={6} item>
-                    <TextField
-                      placeholder="Enter last name"
-                      label="Last Name"
-                      variant="outlined"
-                      fullWidth
-                      required
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      type="email"
-                      placeholder="Enter email"
-                      label="Email"
-                      variant="outlined"
-                      fullWidth
-                      required
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      type="number"
-                      placeholder="Enter phone number"
-                      label="Phone"
-                      variant="outlined"
-                      fullWidth
-                      required
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      label="Message"
-                      multiline
-                      rows={4}
-                      placeholder="Type your message here"
-                      variant="outlined"
-                      fullWidth
-                      required
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Button
-                      type="submit"
-                      variant="contained"
-                      color="primary"
-                      fullWidth
-                    >
-                      Submit
-                    </Button>
-                  </Grid>
-                </Grid>
-              </form>
-            </CardContent>
-          </Card>
-        </Grid>
-      </div>
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        minHeight="100vh"
+      >
+        <Card sx={{ maxWidth: 450, padding: 3 }}>
+          <CardContent>
+            <Typography variant="h5" gutterBottom>
+              Contact Us
+            </Typography>
+            <Typography variant="body2" color="textSecondary" gutterBottom>
+              Fill up the form and our team will get back to you within 24
+              hours.
+            </Typography>
+
+            <form>
+              <Stack spacing={2}>
+                <TextField
+                  placeholder="Enter first name"
+                  label="First Name"
+                  variant="outlined"
+                  fullWidth
+                  required
+                />
+                <TextField
+                  placeholder="Enter last name"
+                  label="Last Name"
+                  variant="outlined"
+                  fullWidth
+                  required
+                />
+                <TextField
+                  type="email"
+                  placeholder="Enter email"
+                  label="Email"
+                  variant="outlined"
+                  fullWidth
+                  required
+                />
+                <TextField
+                  type="number"
+                  placeholder="Enter phone number"
+                  label="Phone"
+                  variant="outlined"
+                  fullWidth
+                  required
+                />
+                <TextField
+                  label="Message"
+                  multiline
+                  rows={4}
+                  placeholder="Type your message here"
+                  variant="outlined"
+                  fullWidth
+                  required
+                />
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  fullWidth
+                >
+                  Submit
+                </Button>
+              </Stack>
+            </form>
+          </CardContent>
+        </Card>
+      </Box>
     </>
   );
 };
