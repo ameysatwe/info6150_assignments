@@ -1,4 +1,3 @@
-import * as React from "react";
 import {
   Box,
   Card,
@@ -7,17 +6,12 @@ import {
   Avatar,
   Stack,
 } from "@mui/material";
-import Navbar from "../Navbar/Navbar"; // Assuming your Navbar component is ready
+import Navbar from "../Navbar/Navbar";
 
 const Home = () => {
-  // Replace the photo URL with the actual path to the image from your server
   const user = JSON.parse(localStorage.getItem("user"));
-  console.log(user);
-  // const avatarUrl =
-  //   "http://localhost:3000/file-b@b.com-1731618105748-553309673.jpeg";
-  const userName = user?.fullName; // Replace with the actual user's name
-  const avatarUrl = `http://localhost:3000/${user.profilePic}/`;
-  console.log(avatarUrl);
+  const avatarUrl = `http://localhost:3000/${user?.profilePic?.split("/")[1]}`;
+  const userName = user?.fullName;
   return (
     <>
       <Navbar />

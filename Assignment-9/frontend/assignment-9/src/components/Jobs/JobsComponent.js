@@ -55,13 +55,12 @@ export default function JobCarousel() {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 2000,
     slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
     cssEase: "linear",
-    arrows: true,
   };
 
   return (
