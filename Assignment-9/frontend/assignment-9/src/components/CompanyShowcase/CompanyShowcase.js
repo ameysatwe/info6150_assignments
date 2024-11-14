@@ -19,9 +19,9 @@ export default function CustomImageList() {
     <>
       <Navbar />
       <div className="image-list">
-        <ImageList sx={{ width: 500, height: "100vh" }}>
+        <ImageList sx={{ width: 500, height: "100vh" }} cols={3}>
           {itemData.map((item) => (
-            <ImageListItem key={item.image}>
+            <ImageListItem key={item.image} className="image-items">
               <img
                 srcSet={`${item.image}?w=248&fit=crop&auto=format&dpr=2 2x`}
                 src={`${item.image}?w=248&fit=crop&auto=format`}
