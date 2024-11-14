@@ -1,5 +1,6 @@
 import { Box, Card, CardContent, Typography } from "@mui/material";
-import Navbar from "../Navbar/Navbar"; // Assuming you have your Navbar component ready
+import Navbar from "../Navbar/Navbar";
+import { TypeAnimation } from "react-type-animation";
 
 export default function AboutComponent() {
   return (
@@ -14,7 +15,11 @@ export default function AboutComponent() {
         <Card sx={{ maxWidth: 600, padding: 3 }}>
           <CardContent>
             <Typography variant="h4" gutterBottom>
-              About Us
+              <TypeAnimation
+                sequence={["About Us", 1000, "NUWorks", 1000]}
+                speed={50}
+                repeat={Infinity}
+              />
             </Typography>
             <Typography variant="body1" color="text.secondary">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
