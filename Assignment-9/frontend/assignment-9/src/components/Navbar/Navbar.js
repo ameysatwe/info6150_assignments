@@ -43,10 +43,15 @@ const Navbar = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar
+      position="static"
+      sx={{ background: "transparent", boxShadow: "none" }}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <AdbIcon
+            sx={{ display: { xs: "none", md: "flex" }, mr: 1, color: "black" }}
+          />
           <Typography
             variant="h6"
             noWrap
@@ -58,7 +63,7 @@ const Navbar = () => {
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: "inherit",
+              color: "black",
               textDecoration: "none",
             }}
           >
@@ -73,7 +78,7 @@ const Navbar = () => {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              color="black"
             >
               <MenuIcon />
             </IconButton>
@@ -99,7 +104,7 @@ const Navbar = () => {
                   <Typography sx={{ textAlign: "center" }}>
                     <Link
                       to={`/${page.toLowerCase()}`}
-                      style={{ textDecoration: "none", color: "inherit" }}
+                      style={{ textDecoration: "none", color: "black" }}
                     >
                       {page}
                     </Link>
@@ -123,7 +128,7 @@ const Navbar = () => {
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: "inherit",
+              color: "black",
               textDecoration: "none",
             }}
           >
@@ -134,7 +139,7 @@ const Navbar = () => {
             {pages.map((page) => (
               <Button
                 key={page}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{ my: 2, color: "Black", display: "block" }}
                 component={Link}
                 to={`/${page.toLowerCase()}`} // Add navigation link here
               >
