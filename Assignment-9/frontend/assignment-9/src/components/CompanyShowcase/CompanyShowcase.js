@@ -22,7 +22,6 @@ export default function CustomImageList() {
   return (
     <>
       <Navbar />
-
       <Box
         sx={{
           display: "flex",
@@ -32,9 +31,9 @@ export default function CustomImageList() {
         }}
       >
         {itemData.map((item) => (
-          <Card sx={{ maxWidth: 345, m: 2 }}>
+          <Card sx={{ maxWidth: 300, m: 4 }} variant="outlined" raised>
             <CardMedia
-              sx={{ height: 200, width: "fitContent" }}
+              sx={{ height: 300, objectFit: "contain" }}
               image={item.image}
               title={item.title}
             />
