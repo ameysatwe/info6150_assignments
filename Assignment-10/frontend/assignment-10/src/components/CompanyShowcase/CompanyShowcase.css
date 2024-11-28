@@ -1,0 +1,13 @@
+.image-list{
+    display: flex;
+    justify-content: center;
+}
+.image-items{
+    margin: 10px;
+    border-radius: 10px;
+    transition: transform 0.5s;
+}
+
+.image-items:hover {
+    transform: scale(1.1);
+}
