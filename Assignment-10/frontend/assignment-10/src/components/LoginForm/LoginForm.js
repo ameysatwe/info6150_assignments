@@ -34,8 +34,17 @@ const LoginForm = () => {
       const res = await loginService.post("/login", data);
       console.log(res.data.responseUser);
       localStorage.setItem("user", JSON.stringify(res.data.responseUser));
+      console.log(res.data.responseUser.type);
       if (res.data.responseUser.type === "admin") {
+        console.log("here");
         navigate("/dashboard");
+        setSnackbarSeverity("success");
+        setSnackbarMessage("Login successful!");
+        setSnackbarOpen(true);
+
+        // Clear the error states
+        setErrors({});
+        return;
       }
       navigate("/");
       setSnackbarSeverity("success");
